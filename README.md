@@ -1,2 +1,2 @@
 # aws-samples
-AWS Samples
+AWS samples

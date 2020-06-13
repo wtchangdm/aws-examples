@@ -1,0 +1,30 @@
+service: ops-asg-status-check
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 128
+  region: ${file(./config/${opt:env}.js):getRegion}
+  deploymentBucket:
+    name: ${file(./config/${opt:env}.js):getDeploymentBucket}
+  logRetentionInDays: 7
+
+functions:
+  alarmManager:
+    handler: alarmManager.handler
+    role: ${file(./config/${opt:env}.js):getLambdaRoleArn}
+    description: This Lambda will create alarm when an instance created by certain auto scaling group, and will delete when such instances are terminated.
+    environment:
+      NODE_ENV: production
+      ENV: ${opt:env}
+    events:
+      - cloudwatchEvent:
+          enabled: true
+          event:
+            source:
+              - "aws.autoscaling"
+            detail-type:
+              - "EC2 Instance Launch Successful"
+              - "EC2 Instance Terminate Successful"
+            detail:
+              AutoScalingGroupName: ${file(./config/${opt:env}.js):getAsgList}

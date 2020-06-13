@@ -1,0 +1,29 @@
+{
+  "version": "0",
+  "id": "0279a9de-8108-ad11-8000-e5bac2ef2",
+  "detail-type": "EC2 Instance Launch Successful",
+  "source": "aws.autoscaling",
+  "account": "12345678",
+  "time": "2020-06-12T09:37:42Z",
+  "region": "ap-northeast-1",
+  "resources": [
+      "arn:aws:autoscaling:ap-northeast-1:12345678:autoScalingGroup:abcdcb00-3c77-4d5a-9b16-52c6d95aa0ef:autoScalingGroupName/SOME-QA-ASG",
+      "arn:aws:ec2:ap-northeast-1:12345678:instance/i-006720003442459f8"
+  ],
+  "detail": {
+      "Description": "Launching a new EC2 instance: i-006720003442459f8",
+      "Details": {
+          "Subnet ID": "subnet-a998d79123abba554",
+          "Availability Zone": "ap-northeast-1a"
+      },
+      "EndTime": "2020-06-12T09:37:42.851Z",
+      "RequestId": "cc100000-8f71-79ca-827e-216d2dcf0311",
+      "ActivityId": "cc100000-8f71-79ca-827e-216d2dcf0311",
+      "Cause": "At 2020-06-12T09:37:04Z an instance was started in response to a difference between desired and actual capacity, increasing the capacity from 4 to 5.",
+      "AutoScalingGroupName": "SOME-QA-ASG",
+      "StartTime": "2020-06-12T09:37:08.190Z",
+      "EC2InstanceId": "i-006720003442459f8",
+      "StatusCode": "InProgress",
+      "StatusMessage": ""
+  }
+}
